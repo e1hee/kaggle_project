@@ -8,3 +8,27 @@ Created on Tue May 30 00:26:12 2017
 import numpy as np
 import pandas as pd
 
+def change_column_name(df):
+    df.rename(columns={'parcelid':'id_parcel', 'yearbuilt': 'build_year', 'basementsqft':'area_basement', 'yardbuildingsqft17':'area_patio',
+                       'yardbuildingsqft26':'area_shed', 'poolsizesum':'area_pool', 'lotsizesquarefeet':'area_lot', 'garagetotalsqft':'area_garage',
+                       'finishedfloor1squarefeet': 'area_firstfloor_finished', 'calculatedfinishedsquarefeet':'area_total_calc',
+                       'finishedsquarefeet6':'area_base', 'finishedsquarefeet12':'area_live_finished','finishedsquarefeet13':'area_liveperi_finished',
+                       'finishedsquarefeet15':'area_total_finished','finishedsquarefeet50':'area_unknown', 'unitcnt':'num_unit',
+                       'numberofstories':'num_story', 'roomcnt':'num_room', 'bathroomcnt': 'num_bathroom', 'bedroomcnt':'num_bedroom',
+                       'calculatedbathnbr':'num_bathroom_calc', 'fullbathcnt':'num_bath', 'threequarterbathnbr':'num_75_bath',
+                       'fireplacecnt':'num_fireplace','poolcnt':'num_pool','garagecarcnt':'num_garage','regionidcounty':'region_county',
+                       'regionidcity':'region_city', 'regionidzip':'region_zip', 'regionidneighborhood':'region_neighbor',
+                       'taxvaluedollarcnt':'tax_total', 'structuretaxvaluedollarcnt':'tax_building', 'landtaxvaluedollarcnt':'tax_land',
+                       'taxamount':'tax_property','assessmentyear':'tax_year','taxdelinquencyflag':'tax_delinquency',
+                       'taxdelinquencyyear':'tax_delinquency_year','propertyzoningdesc':'zoning_property',
+                       'propertylandusetypeid':'zoning_landuse', 'propertycountylandusecode':'zoning_landuse_county',
+                       'fireplaceflag':'flag_fireplace','hashottuborspa':'flag_tub','buildingqualitytypeid':'quality',
+                       'buildingclasstypeid':'framing', 'typeconstructiontypeid':'material','decktypeid':'deck',
+                       'storytypeid':'story','heatingorsystemtypeid':'heating','airconditioningtypeid':'aircon',
+                       'architecturalstyletypeid':'architectural_style'}, inplace=True)
+    
+properties = pd.read_csv('data/properties_2016.csv')
+transaction = pd.read_csv('data/train_2016.csv')
+df = properties.copy()
+change_column_name(df)
+df.columns()
